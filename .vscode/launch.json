@@ -1,0 +1,33 @@
+/*
+ * Filename: .vscode/launch.json
+ * Path: .vscode
+ * Created Date: Wednesday, October 19th 2022, 7:22:57 pm
+ * Author: Sciroccogti
+ * 
+ * Copyright (c) 2022 Your Company
+ */
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/lm/ptb_word_lm.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "cwd": "${workspaceFolder}/lm",
+            "args": [
+                "--dataset=ptb",
+                "--data_path=data/",
+                "--model=small",
+                "--save_path=results/",
+                "--max_max_epoch=15",
+                "--max_grad_norm=3",
+            ]
+        }
+    ]
+}

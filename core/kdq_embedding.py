@@ -13,8 +13,8 @@ def full_embed(input, vocab_size, emb_size, hparams=None,
   Returns:
     input_emb: float tensor, embedding for entity idxs.
   """
-  with tf.variable_scope(name):
-    embedding = tf.get_variable("embedding", [vocab_size, emb_size])
+  with tf.compat.v1.variable_scope(name):
+    embedding = tf.compat.v1.get_variable("embedding", [vocab_size, emb_size])
     input_emb = tf.nn.embedding_lookup(embedding, input)
   return input_emb
 
