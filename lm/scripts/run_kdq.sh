@@ -32,7 +32,7 @@ for additive_quantization in False; do
 		rm -r $save_path
 	fi
 	mkdir -p $save_path
-	CUDA_VISIBLE_DEVICES=$gpu stdbuf -oL -eL python ptb_word_lm.py --dataset=$dataset --data_path=$data_path --model=$model --save_path=$save_path --max_max_epoch=$max_max_epoch --max_grad_norm=$max_grad_norm --kdq_type=$kdq_type --K=$K --D=$D --kdq_share_subspace=$kdq_share_subspace --additive_quantization=$additive_quantization >$save_path/log 2>&1 #&
+	CUDA_VISIBLE_DEVICES=$gpu stdbuf -oL -eL python3 ptb_word_lm.py --dataset=$dataset --data_path=$data_path --model=$model --save_path=$save_path --max_max_epoch=$max_max_epoch --max_grad_norm=$max_grad_norm --kdq_type=$kdq_type --K=$K --D=$D --kdq_share_subspace=$kdq_share_subspace --additive_quantization=$additive_quantization >$save_path/log 2>&1 #&
 done
 done
 done

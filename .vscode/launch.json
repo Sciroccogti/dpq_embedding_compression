@@ -13,7 +13,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Python: ptb_word_lm",
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/lm/ptb_word_lm.py",
@@ -24,9 +24,15 @@
                 "--dataset=ptb",
                 "--data_path=data/",
                 "--model=small",
-                "--save_path=results/",
                 "--max_max_epoch=15",
                 "--max_grad_norm=3",
+                // "--save_path=debugresults/baselines/modelsmall_epoch15_norm3", // baseline
+                "--save_path=debugresults/kd_encoding/modelsmall_epoch15_norm3", // kd
+                "--kdq_type=smx",
+                "--K=2",
+                "--D=10",
+                "--kdq_share_subspace=True",
+                "--additive_quantization=False",
             ]
         }
     ]
