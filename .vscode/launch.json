@@ -3,37 +3,68 @@
  * Path: .vscode
  * Created Date: Wednesday, October 19th 2022, 7:22:57 pm
  * Author: Sciroccogti
- * 
+ *
  * Copyright (c) 2022 Your Company
  */
 {
-    // 使用 IntelliSense 了解相关属性。 
-    // 悬停以查看现有属性的描述。
-    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: ptb_word_lm",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/lm/ptb_word_lm.py",
-            "console": "integratedTerminal",
-            "justMyCode": true,
-            "cwd": "${workspaceFolder}/lm",
-            "args": [
-                "--dataset=ptb",
-                "--data_path=data/",
-                "--model=small",
-                "--max_max_epoch=15",
-                "--max_grad_norm=3",
-                // "--save_path=debugresults/baselines/modelsmall_epoch15_norm3", // baseline
-                "--save_path=debugresults/kd_encoding/modelsmall_epoch15_norm3", // kd
-                "--kdq_type=smx",
-                "--K=2",
-                "--D=10",
-                "--kdq_share_subspace=True",
-                "--additive_quantization=False",
-            ]
-        }
-    ]
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+        "name": "Python: text_classification",
+        "type": "python",
+        "request": "launch",
+        "program": "${workspaceFolder}/text_classification/main.py",
+        "console": "integratedTerminal",
+        "justMyCode": true,
+        "cwd": "${workspaceFolder}/text_classification",
+        "args": [
+          "--dataset=ag_news",
+          "--data_dir=data/ag_news/",
+          "--optimizer=adam",
+        //   "--model=small",
+          "--max_iter=5000",
+          "--learning_rate=1e-3",
+          "--batch_size=64",
+          "--dims=300",
+          "--reg_weight=0",
+          "--concat_maxpooling=False",
+          "--hidden_layers=1",
+        //   "--save_path=debugresults/baseline/_ag_news_bsize256_dims300_maxiter5000", // baseline
+          "--save_path=debugresults/kd_encoding/m_kdqsmx_sharecTrue_addiFalse/K32_D100", // kd
+          "--kdq_type=smx",
+          "--K=32",
+          "--D=100",
+          "--kdq_share_subspace=True",
+          "--additive_quantization=False"
+          // "--rnn_mode=CUDNN",
+        ]
+    },
+    {
+      "name": "Python: ptb_word_lm",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/lm/ptb_word_lm.py",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "cwd": "${workspaceFolder}/lm",
+      "args": [
+        "--dataset=ptb",
+        "--data_path=data/",
+        "--model=small",
+        "--max_max_epoch=15",
+        "--max_grad_norm=3",
+        // "--save_path=debugresults/baselines/modelsmall_epoch15_norm3", // baseline
+        "--save_path=debugresults/kd_encoding/modelsmall_epoch15_norm3", // kd
+        "--kdq_type=smx",
+        "--K=2",
+        "--D=10",
+        "--kdq_share_subspace=True",
+        "--additive_quantization=False"
+        // "--rnn_mode=CUDNN",
+      ]
+    }
+  ]
 }
